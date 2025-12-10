@@ -9,7 +9,7 @@ import {
 } from '@openedx/paragon';
 import { Add as AddIcon, Error } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { StudioFooterSlot } from '@edx/frontend-component-footer';
+import { SmartFooterSlot } from '@edx/frontend-component-footer';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Loading from '../generic/Loading';
@@ -110,6 +110,7 @@ const StudioHome = () => {
   }, [location, userIsActive, isFailedLoadingPage]);
 
   const headerButtons = userIsActive ? getHeaderButtons() : [];
+  
   if (isLoadingPage && !isFiltered) {
     return (<Loading />);
   }
@@ -183,7 +184,7 @@ const StudioHome = () => {
           isQueryPending={anyQueryIsPending}
         />
       </div>
-      <StudioFooterSlot />
+      <SmartFooterSlot loading={isLoadingPage} />
     </>
   );
 };

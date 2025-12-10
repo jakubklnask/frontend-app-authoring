@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-
-import {
-  useLocation,
-} from 'react-router-dom';
-import { StudioFooterSlot } from '@edx/frontend-component-footer';
+import { useLocation } from 'react-router-dom';
+import { SmartFooterSlot } from '@edx/frontend-component-footer';
 import Header from './header';
 import { fetchCourseDetail } from './data/thunks';
 import { useModel } from './generic/model-store';
@@ -18,54 +15,59 @@ import Loading from './generic/Loading';
 
 const CourseAuthoringPage = ({ courseId, children }) => {
   const dispatch = useDispatch();
-
+  const { pathname } = useLocation();
+  
   useEffect(() => {
     dispatch(fetchCourseDetail(courseId));
   }, [courseId]);
-
+  
   useEffect(() => {
     dispatch(fetchOnlyStudioHomeData());
   }, []);
-
+  
   const courseDetail = useModel('courseDetails', courseId);
-
-  const courseNumber = courseDetail ? courseDetail.number : null;
-  const courseOrg = courseDetail ? courseDetail.org : null;
-  const courseTitle = courseDetail ? courseDetail.name : courseId;
-  const courseAppsApiStatus = useSelector(getCourseAppsApiStatus);
   const courseDetailStatus = useSelector(state => state.courseDetail.status);
-  const inProgress = courseDetailStatus === RequestStatus.IN_PROGRESS;
-  const { pathname } = useLocation();
+  
+  // Get course outline loading status if on outline page
+  const outlineLoadingStatus = useSelector(state => state.courseOutline?.loadingStatus);
+  
   const isEditor = pathname.includes('/editor');
-
+  const isCourseOutlinePage = pathname === `/course/${courseId}` || pathname === `/course/${courseId}/`;
+  
+  // Check course detail loading
+  let isLoading = courseDetailStatus === RequestStatus.IN_PROGRESS;
+  
+  // If on course outline page, also check outline loading
+  if (isCourseOutlinePage && outlineLoadingStatus) {
+    isLoading = isLoading || 
+      outlineLoadingStatus.outlineIndexLoadingStatus === RequestStatus.IN_PROGRESS;
+  }
+  
   if (courseDetailStatus === RequestStatus.NOT_FOUND && !isEditor) {
-    return (
-      <NotFoundAlert />
-    );
+    return <NotFoundAlert />;
   }
+  
+  const courseAppsApiStatus = useSelector(getCourseAppsApiStatus);
   if (courseAppsApiStatus === RequestStatus.DENIED) {
-    return (
-      <PermissionDeniedAlert />
-    );
+    return <PermissionDeniedAlert />;
   }
+  
   return (
     <div>
-      {/* While V2 Editors are temporarily served from their own pages
-      using url pattern containing /editor/,
-      we shouldn't have the header and footer on these pages.
-      This functionality will be removed in TNL-9591 */}
-      {inProgress ? !isEditor && <Loading />
-        : (!isEditor && (
+      {isLoading ? (
+        !isEditor && <Loading />
+      ) : (
+        !isEditor && (
           <Header
-            number={courseNumber}
-            org={courseOrg}
-            title={courseTitle}
+            number={courseDetail?.number}
+            org={courseDetail?.org}
+            title={courseDetail?.name || courseId}
             contextId={courseId}
           />
         )
-        )}
+      )}
       {children}
-      {!inProgress && !isEditor && <StudioFooterSlot />}
+      {!isEditor && <SmartFooterSlot loading={isLoading} />}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { StudioFooterSlot } from '@edx/frontend-component-footer';
+import { SmartFooterSlot } from '@edx/frontend-component-footer';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { Toast } from '@openedx/paragon';
 
@@ -28,7 +28,7 @@ export const TaxonomyLayout = () => {
           />
         )}
         <Outlet />
-        <StudioFooterSlot />
+        <SmartFooterSlot loading={false} />
         {toastMessage && (
           <Toast
             show

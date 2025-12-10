@@ -1,10 +1,49 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-      <title>Course Authoring | <%= process.env.SITE_NAME %></title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="shortcut icon" href="<%=htmlWebpackPlugin.options.FAVICON_URL%>" type="image/x-icon" />
+    <title>Course Authoring | <%= process.env.SITE_NAME %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="<%=htmlWebpackPlugin.options.FAVICON_URL%>" type="image/x-icon" />
+    
+    <!-- Custom MFE Styles -->
+    <style>
+      /* NASK Custom Logo & Header Styling */
+      .site-header-desktop .logo img,
+      .site-header-mobile .logo img,
+      header .logo img,
+      header a.logo img,
+      nav img[alt],
+      a[href="/"] img,
+      a[href*="dashboard"] img {
+        height: 60px !important;
+        max-height: 60px !important;
+        width: auto !important;
+        min-height: 60px !important;
+      }
+      
+      header.site-header-desktop,
+      header.site-header-mobile,
+      .site-header {
+        min-height: 60px !important;
+        padding: 5px 0 !important;
+        display: flex !important;
+        align-items: center !important;
+      }
+      
+      .logo,
+      a.logo {
+        height: auto !important;
+        display: flex !important;
+        align-items: center !important;
+      }
+      
+      .pgn__header .logo img,
+      [class*="header"] [class*="logo"] img {
+        height: 60px !important;
+        width: auto !important;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

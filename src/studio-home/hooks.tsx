@@ -21,14 +21,20 @@ const useStudioHome = () => {
   const studioHomeCoursesParams = useSelector(getStudioHomeCoursesParams);
   const { isFiltered } = studioHomeCoursesParams;
   const newCourseData = useSelector(getCourseData);
-  const { studioHomeLoadingStatus } = useSelector(getLoadingStatuses);
+    const {
+    studioHomeLoadingStatus,
+    courseLoadingStatus        // ← NEW
+  } = useSelector(getLoadingStatuses);
   const savingCreateRerunStatus = useSelector(getSavingStatus);
-  const {
+  const {     
     courseCreatorSavingStatus,
     deleteNotificationSavingStatus,
   } = useSelector(getSavingStatuses);
   const [showNewCourseContainer, setShowNewCourseContainer] = useState(false);
-  const isLoadingPage = studioHomeLoadingStatus === RequestStatus.IN_PROGRESS;
+  const isLoadingPage = 
+  studioHomeLoadingStatus === RequestStatus.IN_PROGRESS ||
+  courseLoadingStatus === RequestStatus.IN_PROGRESS
+
   const isFailedLoadingPage = studioHomeLoadingStatus === RequestStatus.FAILED;
 
   // FIXME: data should be loaded with React Query, not useEffect().

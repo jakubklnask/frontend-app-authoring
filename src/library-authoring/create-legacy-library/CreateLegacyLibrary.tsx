@@ -1,4 +1,4 @@
-import { StudioFooterSlot } from '@edx/frontend-component-footer';
+import { SmartFooterSlot } from '@edx/frontend-component-footer';
 import { getConfig } from '@edx/frontend-platform';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import {
@@ -200,7 +200,7 @@ export const CreateLegacyLibrary = ({
         </Formik>
         {isError && (<AlertError error={error} />)}
       </Container>
-      {!showInModal && (<StudioFooterSlot />)}
+      {!showInModal && (<SmartFooterSlot loading={false} />)}
     </>
   );
 };

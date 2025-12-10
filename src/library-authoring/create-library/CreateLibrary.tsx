@@ -1,4 +1,4 @@
-import { StudioFooterSlot } from '@edx/frontend-component-footer';
+import { SmartFooterSlot } from '@edx/frontend-component-footer';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import {
   ActionRow,
@@ -393,7 +393,7 @@ export const CreateLibrary = ({
         {isError && (<AlertError error={error} />)}
 
       </Container>
-      {!showInModal && (<StudioFooterSlot />)}
+      {!showInModal && (<SmartFooterSlot loading={false} />)}
     </>
   );
 };
