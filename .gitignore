@@ -7,7 +7,7 @@ npm-debug.log
 coverage
 
 dist/
-src/i18n/transifex_input.json
+
 temp/babel-plugin-react-intl
 
 ### pyenv ###
@@ -26,7 +26,6 @@ temp/babel-plugin-react-intl
 .env.private
 
 # Messages .json files fetched by atlas
-src/i18n/messages/
+
 
 # environment js config
-env.config.jsx
