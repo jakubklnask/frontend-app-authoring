@@ -75,7 +75,7 @@ export const CourseFilesTable = () => {
     usageErrorMessages: errorMessages.usageMetrics,
     fileType: 'file',
   };
-  const maxFileSize = 20 * 1048576;
+  const maxFileSize = 1000 * 1048576;
 
   const activeColumn = {
     id: 'activeStatus',

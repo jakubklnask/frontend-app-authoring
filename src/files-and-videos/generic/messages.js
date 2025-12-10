@@ -28,8 +28,8 @@ const messages = defineMessages({
   },
   fileSizeError: {
     id: 'course-authoring.files-and-upload.addFiles.error.fileSize',
-    defaultMessage: 'Uploaded file(s) must be 20 MB or less. Please resize file(s) and try again.',
-    description: 'This error message is shown when user tries to upload a file larger than 20 MB',
+    defaultMessage: 'Uploaded file(s) must be 1 GB or less. Please resize file(s) and try again.',
+    description: 'This error message is shown when user tries to upload a file larger than 1 GB',
   },
   noResultsFoundMessage: {
     id: 'course-authoring.files-and-upload.table.noResultsFound.message',

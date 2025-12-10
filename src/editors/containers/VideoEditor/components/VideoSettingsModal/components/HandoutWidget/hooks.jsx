@@ -25,7 +25,7 @@ export const checkValidFileSize = ({
   onSizeFail,
 }) => {
   // Check if the file size is greater than 20 MB, upload size limit
-  if (file.size > 20000000) {
+  if (file.size > 1024 * 1024 * 1024) {
     onSizeFail();
     return false;
   }

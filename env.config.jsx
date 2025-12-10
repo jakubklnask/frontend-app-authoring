@@ -1,6 +1,7 @@
 import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
 const config = {
+  MAX_ASSET_UPLOAD_FILE_SIZE_IN_MB: 250,
   pluginSlots: {
     'org.openedx.frontend.layout.footer.v1': {
       plugins: [
