@@ -53,6 +53,7 @@ export const DECODED_ROUTES = {
   ],
 };
 
+//FILE_SIZE_HARD_CODED_HERE
 export const UPLOAD_FILE_MAX_SIZE =  1024 * 1024 * 1024; // 1GB
 
 export const COURSE_BLOCK_NAMES = ({

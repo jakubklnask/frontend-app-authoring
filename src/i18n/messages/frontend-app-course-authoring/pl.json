@@ -685,7 +685,7 @@
   "course-authoring.files-and-upload.apiStatus.downloadingAction.message": "Pobieranie",
   "course-authoring.files-and-upload.addFiles.error.fileSize": "Przesłane pliki muszą mieć rozmiar 20 MB lub mniej. Zmień rozmiar plików i spróbuj ponownie.",
   "course-authoring.files-and-upload.table.noResultsFound.message": "Nie znaleziono wyników",
-  "course-authoring.files-and-upload.addFiles.button.label": "Dodaj {fileType}s",
+  "course-authoring.files-and-upload.addFiles.button.label": "Dodaj pliki",
   "course-authoring.files-and-upload.action.button.label": "Akcje",
   "course-authoring.files-and-upload.errorAlert.message": "{message}",
   "course-authoring.files-and-uploads.file-info.transcripts.error.alert": "Nieudany transkrypt: \"{error}\"",

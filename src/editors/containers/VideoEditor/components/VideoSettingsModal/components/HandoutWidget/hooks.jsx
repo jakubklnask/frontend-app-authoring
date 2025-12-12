@@ -20,6 +20,7 @@ export const parseHandoutName = ({ handout }) => {
   return 'None';
 };
 
+//FILE_SIZE_HARD_CODED_HERE
 export const checkValidFileSize = ({
   file,
   onSizeFail,
